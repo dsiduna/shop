@@ -57,10 +57,12 @@ const About = () => {
           <div className="container mx-auto px-4">
             <div className="items-center flex flex-wrap">
               <div className="w-full md:w-4/12 ml-auto mr-auto px-4" data-aos="fade-right">
-                <img
+                <Image
                   alt="..."
                   className="max-w-full rounded-lg shadow-lg"
                   src="https://source.unsplash.com/450x700/?gym"
+                  width={100}
+                  height={100}
                 />
               </div>
               <div className="w-full md:w-5/12 px-4" data-aos="fade-left">

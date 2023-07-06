@@ -8,10 +8,12 @@ function AboutComponent() {
             <div className='flex flex-col items-center justify-between w-full mb-10 lg:flex-row'>
                 <div className='flex items-center justify-center lg:w-1/2'>
                     <div className='w-5/5'>
-                        <img
+                        <Image
                             className='object-cover rounded-[35px]'
                             src={user.src}
                             alt='house handover'
+                            width={150}
+                            height={150}
                         />
                     </div>
                 </div>
