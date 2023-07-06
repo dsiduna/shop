@@ -5,16 +5,9 @@ const nextConfig = {
     },
     images: {
       domains: [],
+      unoptimized: true 
     },
-    exportPathMap: async function () {
-      return {
-        '/': { page: '/' },
-      };
-    },
-    
-    output: {
-      dir: 'out',
-    },
+    output: 'export',
   };
   
   module.exports = nextConfig;
