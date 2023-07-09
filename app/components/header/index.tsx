@@ -3,6 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import logo from '../../assets/logo.png';
 
 export default function Header(props: any) {
     const [navbarOpen, setNavbarOpen] = React.useState<boolean>(false)
@@ -20,7 +21,7 @@ export default function Header(props: any) {
                     <div className='w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start'>
                         <Link href='/'>
                             <Image
-                                src='/logo.png'
+                                src={logo}
                                 alt="internet services"
                                 width='90'
                                 height='90'
