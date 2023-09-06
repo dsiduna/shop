@@ -4,8 +4,8 @@ import whatsApp from "../assets/whatsapp.svg";
 
 const ActionBanner = () => (
   <div className="w-full px-[7.5%] sm:px-8 py-16">
-    <div className="text-center flex sm:flex-col p-6 bg-[#f5f5f5] rounded-3xl justify-center items-center gap-2">
-      <div className="text-2xl font-semibold flex-1">
+    <div className="text-center flex xs:flex-col sm:flex-col p-6 bg-[#f5f5f5] rounded-3xl justify-center items-center gap-2 shadow-lg">
+      <div className="text-2xl gap-2 font-semibold flex-1">
         <div className="text-gray-900">
           We've got a diverse selection of devices in stock to meet your
           preferences.

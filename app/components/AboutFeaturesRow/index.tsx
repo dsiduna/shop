@@ -12,7 +12,7 @@ const AboutFeaturesRow = (props: IVerticalFeatureRowProps) => {
   console.log(props);
   return (
     <div
-      className={`flex sm:flex-col px-[5%] xs:px-4 items-center gap-4 py-2 ${
+      className={`flex xs:flex-col sm:flex-col px-[5%] xs:px-4 items-center gap-4 py-2 ${
         props.reverse && "flex-row-reverse"
       }`}
     >
