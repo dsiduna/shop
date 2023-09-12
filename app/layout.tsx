@@ -6,6 +6,7 @@ import './globals.css'
 import { Lato } from 'next/font/google'
 import { usePathname } from 'next/navigation'
 import { Roboto } from 'next/font/google'
+import { Providers } from './Redux/provider'
 
 
 const roboto = Roboto({
@@ -26,9 +27,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={roboto.className}>
-        <LayoutProvider>
-          {children}
-        </LayoutProvider>
+        <Providers>
+          <LayoutProvider>
+            {children}
+          </LayoutProvider>
+        </Providers>
       </body>
     </html>
   )
