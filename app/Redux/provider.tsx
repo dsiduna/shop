@@ -2,7 +2,10 @@
 
 import { ReactNode } from 'react'
 import { Provider } from "react-redux";
-import { store } from "./store";
+import { PersistGate } from 'redux-persist/integration/react';
+import configureStore from './store';
+
+const { persistor, store } = configureStore()
 
 interface ProvidersProps {
     children: ReactNode;
@@ -11,7 +14,9 @@ interface ProvidersProps {
 export function Providers({ children }: ProvidersProps) {
     return (
         <Provider store={store}>
-            {children}
+            <PersistGate loading={"Loading...."} persistor={persistor}>
+                {children}
+            </PersistGate>
         </Provider>
     );
 }
