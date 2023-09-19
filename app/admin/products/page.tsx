@@ -37,8 +37,8 @@ export default function Products() {
                     />
                 </div>
             </div>
-            <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 pt-[20px]'>
-                <div className="h-300px bg-white shadow-xl rounded-xl flex items-center justify-center">
+            <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 pt-[20px] gap-2'>
+                <div className="h-300px bg-white shadow-xl rounded-xl flex flex-col items-center justify-center  max-w-[300px] py-8">
                     <svg
                         className="w-12 h-12 text-gray-500 cursor-pointer"
                         fill="none"
@@ -53,6 +53,9 @@ export default function Products() {
                             d="M12 6v6m0 0v6m0-6h6m-6 0H6"
                         />
                     </svg>
+                    <div className='text-green-500 font-medium text-xl cursor-pointer'>
+                        Add New Product
+                    </div>
                 </div>
             </div>
         </div>

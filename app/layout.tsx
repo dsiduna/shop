@@ -1,12 +1,7 @@
-'use client'
-
-import Footer from './components/footer'
-import Header from './components/header'
 import './globals.css'
-import { Lato } from 'next/font/google'
-import { usePathname } from 'next/navigation'
 import { Roboto } from 'next/font/google'
 import { Providers } from './Redux/provider'
+import LayoutProvider from './components/LayoutProvider/Index'
 
 
 const roboto = Roboto({
@@ -36,34 +31,3 @@ export default function RootLayout({
     </html>
   )
 }
-
-const LayoutProvider = ({
-  children,
-}: {
-  children: React.ReactNode
-}) => {
-  const pathname = usePathname();
-  return (
-
-    <>
-      {(pathname !== "/admin" &&
-        pathname !== "/admin/products" &&
-        pathname !== "/admin/services" &&
-        pathname !== "/admin/logout")
-        ? (
-          <>
-            <Header />
-            <main className='container'>
-              {children}
-            </main>
-            <Footer />
-          </>
-        ) : (
-          <>
-            {children}
-          </>
-        )}
-    </>
-  )
-};
-
