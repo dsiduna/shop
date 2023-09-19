@@ -9,7 +9,7 @@ const roboto = Roboto({
   subsets: ['latin']
 })
 export const metadata = {
-  title: 'Internet Services',
+  title: 'Internet Solutions',
   description: 'We sell quality and brand new mobile phones, tablets, laptops and routers',
 }
 
