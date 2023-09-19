@@ -1,4 +1,5 @@
 // @ts-nocheck
+'use client'
 import { createApi, fakeBaseQuery } from '@reduxjs/toolkit/query/react';
 import {
     arrayUnion,
