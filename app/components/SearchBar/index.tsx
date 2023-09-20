@@ -6,7 +6,7 @@ interface SearchBarProps {
     onSearch: (searchTerm: string) => void;
 }
 
-export const SearchBar = ({ onSearch }: SearchBarProps) => {
+ const SearchBar = ({ onSearch }: SearchBarProps) => {
     const [searchTerm, setSearchTerm] = useState('');
 
     const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -33,4 +33,4 @@ export const SearchBar = ({ onSearch }: SearchBarProps) => {
     );
 };
 
-//export default SearchBar;
+export default SearchBar;

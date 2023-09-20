@@ -1,15 +1,17 @@
 'use client'
+
 import React, { useState } from "react";
-import { useSelector } from "react-redux"
-import { productState } from "@/app/Redux/features/actions/productsSlice"
+import { useSelector } from "react-redux";
+import { productState } from "@/app/Redux/features/actions/productsSlice";
 import { useAddProductMutation } from "@/app/Redux/features/services/productsService";
-import { SearchBar } from "@/app/components/SearchBar";
-import FilterDropdown from "@/app/components/FilterDropDown";
+import dynamic from 'next/dynamic'; // Import dynamic from next/dynamic
+
+const SearchBar = dynamic(() => import("@/app/components/SearchBar"));
+const FilterDropdown = dynamic(() => import("@/app/components/FilterDropDown"));
 
 export default function Products() {
-
     const baba: productState[] = useSelector((state: any) => state.products);
-    const [addProduct, { isLoading: isAddProductLoading }] = useAddProductMutation()
+    const [addProduct, { isLoading: isAddProductLoading }] = useAddProductMutation();
     const [data, setData] = useState({
         title: '',
         description: '',
@@ -20,6 +22,7 @@ export default function Products() {
     });
 
     const options = ['Option 1', 'Option 2', 'Option 3'];
+
     return (
         <div>
             <div className='p-8 text-[32px] text-center font-semibold'>
@@ -60,5 +63,5 @@ export default function Products() {
                 </div>
             </div>
         </div>
-    )
+    );
 }
