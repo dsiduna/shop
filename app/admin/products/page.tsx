@@ -1,17 +1,17 @@
-'use client'
+//'use client'
 
-import React, { useState } from "react";
+/*import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { productState } from "@/app/Redux/features/actions/productsSlice";
 import { useAddProductMutation } from "@/app/Redux/features/services/productsService";
 import { useIsClient } from "@/app/components/LayoutProvider/IsClientProvider";
 import SearchBar from "@/app/components/SearchBar";
-import FilterDropdown from "@/app/components/FilterDropDown";
+import FilterDropdown from "@/app/components/FilterDropDown";*/
 
 
 
 export default function Products() {
-    const baba: productState[] = useSelector((state: any) => state.products);
+    /*const baba: productState[] = useSelector((state: any) => state.products);
     const [addProduct, { isLoading: isAddProductLoading }] = useAddProductMutation();
     const [data, setData] = useState({
         title: '',
@@ -23,11 +23,11 @@ export default function Products() {
     });
 
     const options = ['Option 1', 'Option 2', 'Option 3'];
-    const isClient = useIsClient();
+    const isClient = useIsClient();*/
 
     return (
         <div>
-            {!isClient && <p>baba</p>}
+            {/*{!isClient && <p>baba</p>}
             <div className='p-8 text-[32px] text-center font-semibold'>
                 Products
             </div>
@@ -64,7 +64,8 @@ export default function Products() {
                         Add New Product
                     </div>
                 </div>
-            </div>
+    </div>*/}
+            <p>here we go again</p>
         </div>
     );
 }
