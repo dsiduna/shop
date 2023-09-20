@@ -5,8 +5,15 @@ import { productState } from "@/app/Redux/features/actions/productsSlice"
 import { useAddProductMutation } from "@/app/Redux/features/services/productsService";
 import { SearchBar } from "@/app/components/SearchBar";
 import FilterDropdown from "@/app/components/FilterDropDown";
+import { useRouter } from "next/router";
 
 export default function Products() {
+    const router = useRouter();
+
+    if (router.isFallback) {
+        <h1>loading ....</h1>;
+    }
+
     const baba: productState[] = useSelector((state: any) => state.products);
     const [addProduct, { isLoading: isAddProductLoading }] = useAddProductMutation()
     const [data, setData] = useState({
@@ -17,8 +24,8 @@ export default function Products() {
         category: '',
         images: [],
     });
+
     const options = ['Option 1', 'Option 2', 'Option 3'];
-    console.log(baba)
     return (
         <div>
             <div className='p-8 text-[32px] text-center font-semibold'>
