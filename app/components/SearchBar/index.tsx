@@ -1,5 +1,6 @@
+'use client'
+
 import React, { useState, ChangeEvent } from 'react';
-import { ReactComponent as SearchIcon } from '@/app/assets/search.svg'
 
 interface SearchBarProps {
     onSearch: (searchTerm: string) => void;
