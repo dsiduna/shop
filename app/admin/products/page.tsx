@@ -4,10 +4,11 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { productState } from "@/app/Redux/features/actions/productsSlice";
 import { useAddProductMutation } from "@/app/Redux/features/services/productsService";
-import dynamic from 'next/dynamic'; // Import dynamic from next/dynamic
+import { useIsClient } from "@/app/components/LayoutProvider/IsClientProvider";
+import SearchBar from "@/app/components/SearchBar";
+import FilterDropdown from "@/app/components/FilterDropDown";
 
-const SearchBar = dynamic(() => import("@/app/components/SearchBar"));
-const FilterDropdown = dynamic(() => import("@/app/components/FilterDropDown"));
+
 
 export default function Products() {
     const baba: productState[] = useSelector((state: any) => state.products);
@@ -22,13 +23,15 @@ export default function Products() {
     });
 
     const options = ['Option 1', 'Option 2', 'Option 3'];
+    const isClient = useIsClient();
 
     return (
         <div>
+            {!isClient && <p>baba</p>}
             <div className='p-8 text-[32px] text-center font-semibold'>
                 Products
             </div>
-            {/*<div className='grid grid-cols-3 gap-4 pt-[20px]'>
+            <div className='grid grid-cols-3 gap-4 pt-[20px]'>
                 <div className='col-span-2 w-full'>
                     <SearchBar
                         onSearch={() => { }}
@@ -40,7 +43,7 @@ export default function Products() {
                         onSelect={() => { }}
                     />
                 </div>
-    </div>*/}
+            </div>
             <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 pt-[20px] gap-2'>
                 <div className="h-300px bg-white shadow-xl rounded-xl flex flex-col items-center justify-center  max-w-[300px] py-8">
                     <svg

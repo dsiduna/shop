@@ -2,6 +2,7 @@ import './globals.css'
 import { Roboto } from 'next/font/google'
 import { Providers } from './Redux/provider'
 import LayoutProvider from './components/LayoutProvider/Index'
+import { IsClientCtxProvider } from './components/LayoutProvider/IsClientProvider'
 
 
 const roboto = Roboto({
@@ -22,11 +23,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={roboto.className}>
-        <Providers>
-          <LayoutProvider>
-            {children}
-          </LayoutProvider>
-        </Providers>
+        <IsClientCtxProvider>
+          <Providers>
+            <LayoutProvider>
+              {children}
+            </LayoutProvider>
+          </Providers>
+        </IsClientCtxProvider>
       </body>
     </html>
   )
