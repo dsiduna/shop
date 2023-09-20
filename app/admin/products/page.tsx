@@ -28,7 +28,7 @@ export default function Products() {
             <div className='p-8 text-[32px] text-center font-semibold'>
                 Products
             </div>
-            <div className='grid grid-cols-3 gap-4 pt-[20px]'>
+            {/*<div className='grid grid-cols-3 gap-4 pt-[20px]'>
                 <div className='col-span-2 w-full'>
                     <SearchBar
                         onSearch={() => { }}
@@ -40,7 +40,7 @@ export default function Products() {
                         onSelect={() => { }}
                     />
                 </div>
-            </div>
+    </div>*/}
             <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 pt-[20px] gap-2'>
                 <div className="h-300px bg-white shadow-xl rounded-xl flex flex-col items-center justify-center  max-w-[300px] py-8">
                     <svg
