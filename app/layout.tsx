@@ -11,7 +11,6 @@ const roboto = Roboto({
   subsets: ['latin']
 })
 
-
 const { store, persistor } = configureAppStore();
 
 export default function RootLayout({
