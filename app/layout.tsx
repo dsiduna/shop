@@ -10,10 +10,7 @@ const roboto = Roboto({
   weight: ['400', '700'],
   subsets: ['latin']
 })
-export const metadata = {
-  title: 'Internet Solutions',
-  description: 'We sell quality and brand new mobile phones, tablets, laptops and routers',
-}
+
 
 const { store, persistor } = configureAppStore();
 
