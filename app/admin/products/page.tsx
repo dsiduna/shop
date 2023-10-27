@@ -30,7 +30,6 @@ const Products = () => {
       refetchProducts()
     }
   }, [modal])
-  console.log(isGetProductsLoading)
   return (
     <>
       <AdminModalHOC

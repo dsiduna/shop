@@ -13,7 +13,6 @@ import {
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 
 import { db } from "../../../firebase";
-import { ProductCardProps } from "@/app/components/Cards/ProductCard";
 export const productsService = createApi({
     baseQuery: fakeBaseQuery(),
     endpoints: (builder) => ({

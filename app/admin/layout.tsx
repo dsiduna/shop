@@ -15,7 +15,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                     {children}
                 </React.Fragment>
             ) : (
-                <section className="flex h-[100vh]">
+                <section className="flex h-full">
                     {/* Sidebar */}
                     <aside className="bg-gray-200 w-1/5">
                         <Image
