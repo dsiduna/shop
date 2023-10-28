@@ -14,13 +14,21 @@ import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 
 import { db } from "../../../firebase";
 
+export interface ServiceProps {
+    id: string,
+    name: string,
+    description: string,
+    price: number,
+    images: any
+}
+
 export const servicesService = createApi({
     baseQuery: fakeBaseQuery(),
     endpoints: (builder) => ({
         addService: builder.mutation({
             async queryFn(service) {
                 const serviceData = {
-                    name: service.make,
+                    name: service.name,
                     description: service.description,
                     price: service.price,
                     images: [],
@@ -37,8 +45,10 @@ export const servicesService = createApi({
                         const imageUrl = await getDownloadURL(imageRef);
                         serviceData.images.push(imageUrl);
                     }
+                    console.log(serviceData)
                     await setDoc(serviceRef, serviceData);
                     console.log('service added successfully!');
+                    return { data: serviceData }
                 } catch (error) {
                     console.error('Error adding service:', error);
                 }
@@ -55,7 +65,7 @@ export const servicesService = createApi({
                 }
             }
         }),
-        getServices: builder.query({
+        getServices: builder.query<ServiceProps[], void>({
             async queryFn() {
                 const servicesRef = collection(db, 'services');
                 try {
