@@ -3,6 +3,7 @@
 import './globals.css'
 import { Roboto } from 'next/font/google'
 import LayoutProvider from './components/LayoutProvider/Index'
+import { AuthContextProvider } from './components/context/AuthContext'
 import { Provider } from 'react-redux'
 import configureAppStore from './Redux/store/configureStore'
 
@@ -22,9 +23,11 @@ export default function RootLayout({
     <html lang="en">
       <body className={roboto.className}>
         <Provider store={store}>
-          <LayoutProvider>
-            {children}
-          </LayoutProvider>
+          <AuthContextProvider>
+            <LayoutProvider>
+              {children}
+            </LayoutProvider>
+          </AuthContextProvider>
         </Provider>
       </body>
     </html>

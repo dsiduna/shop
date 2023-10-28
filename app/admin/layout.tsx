@@ -1,13 +1,23 @@
+//@ts-nocheck
 'use client'
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import logo from '../assets/logo.png'
 import Image from 'next/image';
+import { UserAuth } from '../components/context/AuthContext';
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
+    const router= useRouter();
     const pathname = usePathname();
+    const { user } = UserAuth();
+
+    useEffect(() => {
+        if (!user) {
+            router.push('/admin');
+        }
+    }, [user]);
     return (
         <>
             {(pathname === '/admin' || pathname === '/admin/logout') ? (
