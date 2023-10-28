@@ -27,6 +27,7 @@ export const productsService = createApi({
                     images: [],
                     colour: product.colour,
                     condition: product.condition,
+                    category: product.category,
                 };
                 try {
                     const productRef = doc(collection(db, 'products'));

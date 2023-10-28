@@ -1,3 +1,5 @@
+
+
 import React, { ChangeEvent } from 'react';
 import InputField from '../InputField';
 import CategoryPicker from '../CategoryPicker';
@@ -5,6 +7,7 @@ import { productCategories, conditions } from '@/app/utils/productCategories';
 
 interface ProductInputProps {
   productData: {
+    id: string;
     make: string;
     model: string;
     price: any;

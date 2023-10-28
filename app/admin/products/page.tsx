@@ -8,6 +8,7 @@ import { updateModal } from "../../Redux/actions/modals";
 import { useGetProductsQuery } from "@/app/Redux/services/productsService";
 import ProductCard from "@/app/components/Cards/ProductCard";
 import ProductCardLoading from "@/app/components/Cards/ProductCardLoading";
+import { productCategories } from "@/app/utils/productCategories";
 
 const Products = () => {
   const options = ['Option 1', 'Option 2', 'Option 3'];
@@ -48,7 +49,7 @@ const Products = () => {
           </div>
           <div>
             <FilterDropdown
-              options={options}
+              options={productCategories}
               onSelect={() => { }}
             />
           </div>

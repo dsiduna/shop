@@ -18,7 +18,7 @@ interface PictureItemProps {
   onRemove: () => void;
 }
 
-const PictureItem: React.FC<PictureItemProps> = ({ pictureUrl, alt, onRemove }) => (
+export const PictureItem: React.FC<PictureItemProps> = ({ pictureUrl, alt, onRemove }) => (
   <div className="relative">
     <Image
       src={pictureUrl}
@@ -41,6 +41,7 @@ const AddProduct: React.FC = () => {
   const dispatch = useDispatch();
   const [addProduct, { isLoading: isAddProductLoading }] = useAddProductMutation();
   const initialState = {
+    id: '',
     make: '',
     model: '',
     category: productCategories[0],

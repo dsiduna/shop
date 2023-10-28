@@ -65,17 +65,17 @@ const AdminModalHOC: React.FC<AdminModalHOCProps> = ({ open, setOpen }) => {
           open={open}
           setOpen={setOpen}
           size='w-[600px] h-[548px]'
-          content={<DeleteRecord />}
+          content={<DeleteRecord closeModal={()=> setOpen(false)}/>}
           title="Delete"
         />
       );
-      case 'View Product':
+    case 'View Product':
       return (
         <Modal
           open={open}
           setOpen={setOpen}
           size='w-[600px] h-[548px]'
-          content={<ViewProduct/>}
+          content={<ViewProduct />}
           title="Product"
         />
       );
@@ -84,9 +84,9 @@ const AdminModalHOC: React.FC<AdminModalHOCProps> = ({ open, setOpen }) => {
         <Modal
           open={open}
           setOpen={setOpen}
-          size='w-[600px] h-[548px]'
-          content={<Congratulations />}
-          title="Add Product"
+          size='w-[380px] h-[260px]'
+          content={<Congratulations closeModal={() => setOpen(false)} />}
+          title=''
         />
       );
     default:
