@@ -1,4 +1,7 @@
+//@ts-nocheck
+
 'use client'
+
 import React, { useState, useRef, ChangeEvent } from 'react';
 import addIcon from '@/app/assets/add.svg';
 import Image from 'next/image';
