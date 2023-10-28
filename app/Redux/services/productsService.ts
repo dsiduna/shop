@@ -14,6 +14,7 @@ import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 
 import { db } from "../../../firebase";
 export const productsService = createApi({
+    reducerPath: 'productsService',
     baseQuery: fakeBaseQuery(),
     endpoints: (builder) => ({
         addProduct: builder.mutation({
@@ -41,6 +42,7 @@ export const productsService = createApi({
                     }
                     await setDoc(productRef, productData);
                     console.log('Product added successfully!');
+                    return { data: productData }
                 } catch (error) {
                     console.error('Error adding product:', error);
                 }
@@ -106,7 +108,9 @@ export const productsService = createApi({
                         productData.images.push(imageUrl);
                     }
                     await updateDoc(productRef, productData);
+
                     console.log('Product updated successfully!');
+                    return { data: productData }
                 } catch (error) {
                     console.error('Error updating product:', error);
                 }
