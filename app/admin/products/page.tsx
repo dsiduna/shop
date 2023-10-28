@@ -85,6 +85,7 @@ const Products = () => {
             <React.Fragment>
               {products?.map((product) => (
                 <ProductCard
+                  key={product.id}
                   setOpen={setOpen}
                   product={product}
                 />

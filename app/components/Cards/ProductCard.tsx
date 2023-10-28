@@ -32,7 +32,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, setOpen = () => { } 
 
     const onView = () => {
         dispatch(updateProduct(product));
-        dispatch(updateModal('View Car'));
+        dispatch(updateModal('View Product'));
         setOpen(true);
     };
 
