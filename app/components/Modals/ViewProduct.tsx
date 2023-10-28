@@ -2,7 +2,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Image from 'next/image';
-import Link from 'next/link';
 import { updateModal } from '../../Redux/actions/modals';
 import { formatCurrency } from '../../utils/formatCurrency';
 import { Carousel } from 'react-responsive-carousel';
@@ -21,14 +20,6 @@ interface SliderSettings {
 const ViewProduct: React.FC = () => {
   const product = useSelector((state: any) => state.modal.product);
   const dispatch = useDispatch();
-
-  const settings: SliderSettings = {
-    dots: true,
-    infinite: true,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-  };
-  console.log(product);
 
   return (
     <div className="pt-4 flex flex-col justify-center items-center">

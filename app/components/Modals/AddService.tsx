@@ -42,7 +42,6 @@ export const PictureItem: React.FC<PictureItemProps> = ({ pictureUrl, alt, onRem
 
 const AddService: React.FC = () => {
   const dispatch = useDispatch();
-  const [addProduct, { isLoading: isAddProductLoading }] = useAddProductMutation();
   const [addService, { isLoading: isAddServiceLoading }] = useAddServiceMutation()
   const initialState = {
     id: '',
@@ -215,7 +214,7 @@ const AddService: React.FC = () => {
         </div>
       </div>
       <div className='flex justify-center items-center flex-col'>
-        {isAddProductLoading ? (
+        {isAddServiceLoading ? (
           <Image
             src={loader}
             alt=''

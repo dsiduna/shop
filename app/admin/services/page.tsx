@@ -31,7 +31,6 @@ const Services = () => {
             refetchServices()
         }
     }, [modal])
-    console.log(open);
     return (
         <>
             <AdminModalHOC

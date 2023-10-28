@@ -20,9 +20,8 @@ const ServiceCard: React.FC<ServiceProps> = ({ service, setOpen = () => { } }) =
     const dispatch = useDispatch();
     const onView = () => {
         dispatch(updateProduct(service));
-        dispatch(updateModal('Congratulations'));
+        dispatch(updateModal('View Service'));
         setOpen(true);
-        console.log('we here')
     };
 
     return (
@@ -46,10 +45,10 @@ const ServiceCard: React.FC<ServiceProps> = ({ service, setOpen = () => { } }) =
                                 ))}
                             </Carousel>
                         </div>
-                        <div className='text-center text-[#7f2d00] font-semibold text-[18px]'>
+                        <div className='text-center text-gray-900 font-semibold text-[18px]'>
                             {service.name}
                         </div>
-                        <div className='text-center text-[#7f2d00] text-[14px]'>
+                        <div className='text-center text-gray-900 text-[14px] pb-4'>
                             $ {service.price}
                         </div>
                         <div className='flex justify-center items-center pb-4'>

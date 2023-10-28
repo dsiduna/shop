@@ -8,6 +8,7 @@ import EditService from "./EditService";
 import DeleteRecord from "./DeleteRecord";
 import Congratulations from "./Congratulations";
 import ViewProduct from "./ViewProduct";
+import ViewService from "./ViewService";
 
 
 interface AdminModalHOCProps {
@@ -79,6 +80,16 @@ const AdminModalHOC: React.FC<AdminModalHOCProps> = ({ open, setOpen }) => {
           title="Product"
         />
       );
+      case 'View Service':
+        return (
+          <Modal
+            open={open}
+            setOpen={setOpen}
+            size='w-[600px] h-[548px]'
+            content={<ViewService />}
+            title="Service"
+          />
+        );
     case 'Congratulations':
       return (
         <Modal
