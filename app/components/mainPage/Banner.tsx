@@ -44,30 +44,37 @@ const Banner = () => {
           </div>
         </div>
         <div className='md:w-4/12 lg:w-5/12 xl:w-4/12 2xl:w-3/12 bg-gray-50 py-6 px-6 md:py-0 md:px-4 lg:px-6 flex flex-col justify-center relative'>
-          <Carousel showThumbs={true} showStatus={false} infiniteLoop={true} showArrows={false} interval={5000}>
-            {productsArray.map((product) => (
-              <div className='h-full flex' key={product.id}>
-                <div className='flex flex-col justify-center text-left w-full'>
-                  <h1 className='text-xl lg:text-2xl font-semibold text-gray-800'>{product.make} {product.model}</h1>
-                  <p className='text-base lg:text-md text-gray-800'>For only <span className='font-bold'> $ {product.price}</span></p>
-                  <Link href={`/${product.id}`} target='_blank'>
-                    <div className='mt-2 bg-gray-900 text-white rounded-xl cursor-pointer w-[80px] text-center py-[2px]'>
-                      Details
-                    </div>
-                  </Link>
+          {isProductsLoading ? (
+            <div className="animate-pulse">
+              <div className="h-8 w-40 bg-gray-200 mb-2"></div>
+              <div className="h-4 w-24 bg-gray-200"></div>
+            </div>
+          ) : (
+            <Carousel showThumbs={true} showStatus={false} infiniteLoop={true} showArrows={false} interval={5000}>
+              {productsArray.map((product) => (
+                <div className='h-full flex' key={product.id}>
+                  <div className='flex flex-col justify-center text-left w-full'>
+                    <h1 className='text-xl lg:text-2xl font-semibold text-gray-800'>{product.make} {product.model}</h1>
+                    <p className='text-base lg:text-md text-gray-800'>For only <span className='font-bold'> $ {product.price}</span></p>
+                    <Link href={`/${product.id}`} target='_blank'>
+                      <div className='mt-2 bg-gray-900 text-white rounded-xl cursor-pointer w-[80px] text-center py-[2px]'>
+                        Details
+                      </div>
+                    </Link>
+                  </div>
+                  <div className='flex justify-end w-full h-full px-2'>
+                    <Image
+                      src={product.images[0]}
+                      alt=''
+                      width={40}
+                      height={40}
+                      className=''
+                    />
+                  </div>
                 </div>
-                <div className='flex justify-end w-full h-full px-2'>
-                  <Image
-                    src={product.images[0]}
-                    alt=''
-                    width={40}
-                    height={40}
-                    className=''
-                  />
-                </div>
-              </div>
-            ))}
-          </Carousel>
+              ))}
+            </Carousel>
+          )}
         </div>
       </div>
     </div>
@@ -75,5 +82,4 @@ const Banner = () => {
 }
 
 export default Banner
-
 
