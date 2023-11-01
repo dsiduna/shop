@@ -46,7 +46,7 @@ const Banner = () => {
         <div className='md:w-4/12 lg:w-5/12 xl:w-4/12 2xl:w-3/12 bg-gray-50 py-6 px-6 md:py-0 md:px-4 lg:px-6 flex flex-col justify-center relative'>
           <Carousel showThumbs={true} showStatus={false} infiniteLoop={true} showArrows={false} interval={5000}>
             {productsArray.map((product) => (
-              <div className='h-full flex'>
+              <div className='h-full flex' key={product.id}>
                 <div className='flex flex-col justify-center text-left w-full'>
                   <h1 className='text-xl lg:text-2xl font-semibold text-gray-800'>{product.make} {product.model}</h1>
                   <p className='text-base lg:text-md text-gray-800'>For only <span className='font-bold'> $ {product.price}</span></p>
