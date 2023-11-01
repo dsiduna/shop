@@ -18,6 +18,7 @@ export interface ProductCardProps {
         phone: string;
         colour: string;
         category: string;
+        description: string;
     };
     setOpen?: React.Dispatch<React.SetStateAction<boolean>>;
 }

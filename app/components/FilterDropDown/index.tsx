@@ -3,15 +3,16 @@ import React, { useState, ChangeEvent } from 'react';
 interface FilterDropdownProps {
     options: string[];
     onSelect: (selectedOption: string) => void;
+    selectedOption: string;
+    setSelectedOption: React.Dispatch<React.SetStateAction<string>>;
 }
 
-const FilterDropdown: React.FC<FilterDropdownProps> = ({ options, onSelect }) => {
-    const [selectedOption, setSelectedOption] = useState('');
+const FilterDropdown: React.FC<FilterDropdownProps> = ({ options, onSelect, selectedOption, setSelectedOption }) => {
+
 
     const handleOptionSelect = (event: ChangeEvent<HTMLSelectElement>) => {
         const { value } = event.target;
         setSelectedOption(value);
-        onSelect(value);
     };
 
     return (
