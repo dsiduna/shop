@@ -73,13 +73,23 @@ export const productsService = createApi({
                 }
             },
         }),
-        getSingleProduct: builder.mutation({
+        getSingleProduct: builder.query<ProductCardProps.product, string>({
             async queryFn(id) {
                 const productRef = doc(db, 'products', id)
+                const serviceRef = doc(db, 'services', id)
                 try {
-                    await getDoc(productRef)
+                    const snapshot = await getDoc(productRef);
+                    const serviceSnapshot = await getDoc(serviceRef);
+                    let product;
+                    if (snapshot.exists()) {
+                        product = snapshot.data();
+                    } else {
+                        product = serviceSnapshot.data()
+                    }
+                    return { data: product }
                 } catch (error) {
                     console.log(error)
+                    throw new Error(error.message);
                 }
             }
         }),
@@ -124,6 +134,6 @@ export const {
     useAddProductMutation,
     useDeleteProductMutation,
     useGetProductsQuery,
-    useGetSingleProductMutation,
+    useGetSingleProductQuery,
     useUpdateProductMutation,
 } = productsService;
