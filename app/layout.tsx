@@ -1,13 +1,13 @@
 'use client'
 
 import './globals.css'
-import { Roboto } from 'next/font/google'
+import { Montserrat } from 'next/font/google'
 import LayoutProvider from './components/LayoutProvider/Index'
 import { AuthContextProvider } from './components/context/AuthContext'
 import { Provider } from 'react-redux'
 import configureAppStore from './Redux/store/configureStore'
 
-const roboto = Roboto({
+const montserrat = Montserrat({
   weight: ['400', '700'],
   subsets: ['latin']
 })
@@ -21,7 +21,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={roboto.className}>
+      <body className={montserrat.className}>
         <Provider store={store}>
           <AuthContextProvider>
             <LayoutProvider>
