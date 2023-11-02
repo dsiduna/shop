@@ -17,6 +17,9 @@ const PublicProductCard: React.FC<ProductCardProps> = ({ product }) => {
                             width={300}
                             className="h-[200px] rounded-xl flex flex-col justify-center items-center"
                         />
+                        <span className={`absolute top-0 left-0 m-2 rounded-full px-4 text-center text-sm font-medium text-white ${product.condition === 'New' ? 'bg-green-700' : 'bg-cyan-600'}`}>
+                            {product.condition}
+                        </span>
                     </div>
                 ))}
             </Carousel>
@@ -29,7 +32,7 @@ const PublicProductCard: React.FC<ProductCardProps> = ({ product }) => {
                         <span className="text-md font-bold text-slate-900">${product.price}</span>
                     </p>
                 </div>
-                <Link href={`/${product.id}`} className="flex items-center justify-center rounded-xl bg-slate-900 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-blue-300">
+                <Link href={`/${product.id}`} target='_blank' className="flex items-center justify-center rounded-xl bg-slate-900 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-blue-300">
                     View Product Details
                 </Link>
             </div>

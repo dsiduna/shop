@@ -19,6 +19,7 @@ export interface ProductCardProps {
         colour: string;
         category: string;
         description: string;
+        condition: string;
     };
     setOpen?: React.Dispatch<React.SetStateAction<boolean>>;
 }
