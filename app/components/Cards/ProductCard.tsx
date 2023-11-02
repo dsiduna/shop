@@ -61,11 +61,8 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, setOpen = () => { } 
                         <div className='text-center text-[#7f2d00] font-semibold text-[18px]'>
                             {product.make + ' '} {product.model}
                         </div>
-                        <div className='text-center text-[#7f2d00] text-[14px]'>
+                        <div className='text-center text-[#7f2d00] text-[12px]'>
                             $ {product.price}
-                        </div>
-                        <div className='px-2 text-center py-4'>
-                            Seller: +{product.phone}
                         </div>
                         <div className='flex justify-center items-center pb-4'>
                             <div
