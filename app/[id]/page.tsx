@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { Metadata, ResolvingMetadata } from 'next'
-import { doc, getDoc } from 'firebase/firestore';
+import { collection, doc, getDoc, getDocs } from 'firebase/firestore';
 import { db } from '@/firebase';
 import Product from './Product';
 
@@ -48,10 +48,26 @@ export async function generateMetadata(
     }
 }
 
+export async function generateStaticParams() {
+    const productRef = collection(db, 'products');
+    const serviceRef = collection(db, 'services');
+
+    const productSnapshot = await getDocs(productRef);
+    const serviceSnapshot = await getDocs(serviceRef);
+    const products = productSnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+    const services = serviceSnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+
+    const Arr = [...products, ...services]
+
+    return Arr.map((item) => ({
+        id: item.id,
+    }))
+}
+
 export default function Page({ params }: Props) {
     return (
         <div>
-            <Product params={params}/>
+            <Product params={params} />
         </div>
     )
 }
