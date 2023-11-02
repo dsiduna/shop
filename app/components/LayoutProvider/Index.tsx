@@ -20,11 +20,11 @@ const LayoutProvider = ({
                 pathname !== "/admin/logout")
                 ? (
                     <>
-                        <Header />
                         <main className='container'>
+                            <Header />
                             {children}
+                            <Footer />
                         </main>
-                        <Footer />
                     </>
                 ) : (
                     <>

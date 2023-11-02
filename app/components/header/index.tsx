@@ -8,7 +8,7 @@ import logo from '../../assets/logo.png';
 export default function Header(props: any) {
     const [navbarOpen, setNavbarOpen] = React.useState<boolean>(false)
     return (
-        <header className='sticky top-0 '>
+        <header className=''>
             <nav
                 className={
                     (props.transparent
