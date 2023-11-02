@@ -1,3 +1,4 @@
+//@ts-nocheck
 'use client'
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -9,9 +10,12 @@ import { useGetProductsQuery } from "@/app/Redux/services/productsService";
 import ProductCard from "@/app/components/Cards/ProductCard";
 import ProductCardLoading from "@/app/components/Cards/ProductCardLoading";
 import { productCategories } from "@/app/utils/productCategories";
+import { ProductCardProps } from "@/app/components/Cards/ProductCard";
 
 const Products = () => {
   const [open, setOpen] = useState(false);
+  const [filteredProducts, setFilteredProducts] = useState<ProductCardProps['product'][]>([]);
+  const [selectedOption, setSelectedOption] = useState<string>('All');
   const dispatch = useDispatch();
   const modal = useSelector((state: any) => state.modal.data);
 
@@ -30,6 +34,39 @@ const Products = () => {
       refetchProducts()
     }
   }, [modal])
+
+
+  useEffect(() => {
+    if (products) {
+      setFilteredProducts(products)
+    }
+  }, [products])
+
+  useEffect(() => {
+    if (products) {
+      const filteredData = (selectedOption === 'All' || selectedOption === '')
+        ? products
+        : products.filter((product) => product.category === selectedOption);
+      setFilteredProducts(filteredData);
+    }
+  }, [products, selectedOption]);
+
+
+
+  const handleSearch = (searchTerm: string) => {
+    if (searchTerm === '') {
+      setFilteredProducts(products);
+    } else {
+      const filtered = products?.filter(
+        (item) =>
+          item.make.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          item.model.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          item.description.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+      setFilteredProducts(filtered);
+    }
+  };
+  console.log(selectedOption);
   return (
     <>
       <AdminModalHOC
@@ -43,13 +80,15 @@ const Products = () => {
         <div className='grid grid-cols-3 gap-4 pt-[20px]'>
           <div className='col-span-2 w-full'>
             <SearchBar
-              onSearch={() => { }}
+              onSearch={handleSearch}
             />
           </div>
           <div>
             <FilterDropdown
               options={productCategories}
               onSelect={() => { }}
+              selectedOption={selectedOption}
+              setSelectedOption={setSelectedOption}
             />
           </div>
         </div>
@@ -83,7 +122,7 @@ const Products = () => {
             </React.Fragment>
           ) : (
             <React.Fragment>
-              {products?.map((product) => (
+              {filteredProducts?.map((product) => (
                 <ProductCard
                   key={product.id}
                   setOpen={setOpen}

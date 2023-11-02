@@ -49,7 +49,6 @@ const Products = () => {
             setFilteredProducts(filtered);
         }
     };
-    console.log(selectedOption)
     return (
         <div className='p-4'>
             <div className='grid grid-cols-3 gap-4 pt-[20px]'>
@@ -77,6 +76,7 @@ const Products = () => {
                     <React.Fragment>
                         {filteredProducts.map((product) => (
                             <PublicProductCard
+                                key={product.id}
                                 product={product}
                             />
                         ))}
