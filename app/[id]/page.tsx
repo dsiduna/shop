@@ -38,12 +38,13 @@ export async function generateMetadata(
         make = '',
         model = '',
         description = '',
+        images = [],
     } = productData || {};
     return {
         title: name === '' ? (make + ' ' + model) : name,
         description: description.slice(0, 95) + '...',
         openGraph: {
-            images: ['../../assets/sidesigned.png', ...previousImages],
+            images: [images[0], ...previousImages],
         },
     }
 }
