@@ -1,13 +1,15 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface ModalState {
-    data: any;
+    data: string;
     product: any;
+    publicProduct: any;
 }
 
 const initialState: ModalState = {
-    data: {},
+    data: '',
     product: {},
+    publicProduct: {},
 };
 
 const modalReducer = createSlice({
@@ -20,6 +22,9 @@ const modalReducer = createSlice({
         updateProduct: (state, action: PayloadAction<any>) => {
             state.product = action.payload;
         },
+        updatePublicProduct: (state, action: PayloadAction<any>) => {
+            state.publicProduct = action.payload;
+        },
     },
 });
 const { actions, reducer } = modalReducer;
@@ -27,6 +32,7 @@ const { actions, reducer } = modalReducer;
 export const {
     updateModal,
     updateProduct,
+    updatePublicProduct
 } = actions;
 
 export default reducer; 
