@@ -4,9 +4,13 @@ import React, { useEffect, useState } from 'react';
 import { Props } from './page';
 import { useGetSingleProductQuery } from '../Redux/services/productsService';
 import { formatCurrency } from '../utils/formatCurrency';
+import { updateModal, updatePublicProduct } from '../Redux/actions/modals';
+import { useDispatch } from 'react-redux';
+import PublicModalHOC from '../components/Modals/PublicModalsHOC';
 
 const Product = ({ params }: Props) => {
-
+    const dispatch = useDispatch();
+    const [open, setOpen] = useState<boolean>(false)
     const { data: productData, isLoading: isGetProductLoading } = useGetSingleProductQuery(params.id);
 
     const {
@@ -29,9 +33,19 @@ const Product = ({ params }: Props) => {
         }
     }, [images]);
 
+    const onOrderClick = () => {
+        dispatch(updateModal('Make Order'));
+        dispatch(updatePublicProduct(productData))
+        setOpen(true)
+    }
+
 
     return (
         <div className={`flex flex-col justify-start items-center min-h-screen`}>
+            <PublicModalHOC
+                open={open}
+                setOpen={setOpen}
+            />
             {isGetProductLoading ? (
                 <LoadingSkeleton />
             ) : (
@@ -98,7 +112,9 @@ const Product = ({ params }: Props) => {
                                     <div className="flex flex-wrap items-center -mx-4 ">
                                         <div className="w-full px-4 mb-4 lg:w-1/2 lg:mb-0">
                                             <button
-                                                className="flex items-center justify-center w-full p-4 text-blue-500 border border-blue-500 rounded-md dark:text-gray-200 dark:border-blue-600 hover:bg-blue-600 hover:border-blue-600 hover:text-gray-100 dark:bg-blue-600 dark:hover:bg-blue-700 dark:hover:border-blue-700 dark:hover:text-gray-300">
+                                                className="flex items-center justify-center w-full p-4 text-blue-500 border border-blue-500 rounded-md dark:text-gray-200 dark:border-blue-600 hover:bg-blue-600 hover:border-blue-600 hover:text-gray-100 dark:bg-blue-600 dark:hover:bg-blue-700 dark:hover:border-blue-700 dark:hover:text-gray-300"
+                                                onClick={onOrderClick}
+                                            >
                                                 Make an Order
                                             </button>
                                         </div>
