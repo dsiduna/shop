@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react'
+import { useMediaQuery } from 'react-responsive';
 import { useGetServicesQuery } from '@/app/Redux/services/servicesService';
 
 interface ServiceProps {
@@ -17,9 +18,10 @@ interface ServiceProps {
 
 const Services = () => {
     const { data: services, isLoading: isGetServicesLoading, refetch: refetchServices } = useGetServicesQuery();
+    const isMobile: boolean = useMediaQuery({ query: '(max-width: 760px)' })
     return (
-        <div className='bg-gray-100 h-full'>
-            <div className='text-3xl p-4 font-semibold text-left'>
+        <div className='bg-gray-100 h-full mt-4'>
+            <div className={`${isMobile ? 'text-xl' : 'text-3xl'} p-4 font-semibold text-left`}>
                 Our Services
             </div>
             <div className='p-4 pt-12 flex flex-col justify-center gap-12'>

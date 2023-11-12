@@ -10,7 +10,6 @@ interface Props {
 
 const MobileMainPage = () => {
     const [view, setView] = useState<string>('products');
-    console.log(view);
     return (
         <div>
             <div className='flex items-center justify-evenly'>

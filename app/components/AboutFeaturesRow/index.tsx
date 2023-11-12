@@ -1,4 +1,7 @@
+'use client'
+
 import Image from "next/image";
+import { useMediaQuery } from "react-responsive";
 
 type IVerticalFeatureRowProps = {
   title: string;
@@ -9,12 +12,11 @@ type IVerticalFeatureRowProps = {
 };
 
 const AboutFeaturesRow = (props: IVerticalFeatureRowProps) => {
-  console.log(props);
+  const isMobile: boolean = useMediaQuery({ query: '(max-width: 760px)' })
   return (
     <div
-      className={`flex xs:flex-col sm:flex-col px-[5%] xs:px-4 items-center gap-4 py-2 ${
-        props.reverse && "flex-row-reverse"
-      }`}
+      className={`flex ${isMobile ? 'flex-col' : 'flex-row'} px-[5%] xs:px-4 items-center gap-4 py-2 ${props.reverse && "flex-row-reverse"
+        }`}
     >
       <div className="w-full text-center sm:px-6">
         <h3 className="text-3xl text-gray-900 font-semibold">{props.title}</h3>

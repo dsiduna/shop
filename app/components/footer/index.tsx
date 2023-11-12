@@ -2,24 +2,26 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import logo from '../../assets/logo.png'
+import { useMediaQuery } from 'react-responsive';
 
 const Footer = () => {
+  const isMobile: boolean = useMediaQuery({ query: '(max-width: 760px)' })
   return (
     <footer className="p-4 bg-white sm:p-6">
-      <div className="flex xs:flex-col w-full items-center justify-evenly">
-        <div className="mb-6 md:mb-0 flex justify-start xs:justify-center items-center flex-1">
+      <div className={`flex ${isMobile ? 'flex-col' : 'flex-row'} w-full items-center justify-evenly`}>
+        <div className="mb-6 md:mb-0 flex justify-start items-center flex-1">
           <Link href='/'>
             <Image
               src={logo}
               alt="internet services"
               width={150}
               height={150}
-              className=' pl-12   hover:opacity-75'
+              className={`pb-4 hover:opacity-75 flex ${isMobile ? '' : 'ml-8'}`}
             />
-            <span className="self-center text-2xl font-semibold whitespace-nowrap mr-12">Internet Solutions</span>
+            <span className={`self-center ${isMobile ? 'text-lg' : 'text-2xl  mr-12'}sm:text-lg font-semibold whitespace-nowrap`}>Internet Solutions</span>
           </Link>
         </div>
-        <div className="grid grid-cols-3 gap-8 sm:gap-6 sm:grid-cols-2 flex">
+        <div className="grid grid-cols-3 gap-8 sm:gap-6 sm:grid-cols-2 flex w-full">
           <div>
             <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase">Quick Links</h2>
             <ul className="text-gray-600">
@@ -35,7 +37,7 @@ const Footer = () => {
               </li>
             </ul>
           </div>
-          <div>
+          <div className='w-full whitespace-nowrap'>
             <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase">Legal</h2>
             <ul className="text-gray-600">
               <li className="mb-4">
@@ -55,7 +57,7 @@ const Footer = () => {
       <hr className="my-2 border-gray-200 sm:mx-auto" />
       <div className="flex items-center sm:justify-between">
         <div className='flex flex-1'>
-          <span className="text-sm text-gray-500 sm:text-center">©   {new Date().getFullYear()} <a href="https://munashe.co.zw" target='_blank' className="hover:text-[#000000]">SiDesigned™</a>. All Rights Reserved.
+          <span className="text-sm text-gray-500 sm:text-center">©   {new Date().getFullYear()} <a href="https://munashe.co.zw" target='_blank' className="hover:text-[#000000]">SiDesigned™</a>. {!isMobile && 'All Rights Reserved.'}
           </span>
         </div>
         <div className="flex mt-4 space-x-6 sm:justify-center sm:mt-0">

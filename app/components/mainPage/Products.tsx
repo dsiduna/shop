@@ -29,7 +29,6 @@ const Products = () => {
                 : data.filter((product) => product.category === selectedOption);
             setFilteredProducts(filteredData);
         }
-        console.log('useeffect ran')
     }, [data, selectedOption]);
 
 
@@ -51,7 +50,7 @@ const Products = () => {
     };
     return (
         <div className='p-4'>
-            <div className='grid grid-cols-3 gap-4 pt-[20px]'>
+            <div className='grid grid-cols-3 gap-4 pt-[20px] px-2'>
                 <div className='col-span-2 w-full'>
                     <SearchBar
                         onSearch={handleSearch}
